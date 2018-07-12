@@ -5,7 +5,7 @@ Blueprint for Selenium test with JUnit 5 runner
 2. Maven 3 (added to path)
 3. Git client
 4. Your favourite IDE (IDEA, Eclipse, NetBeans)
-5. Chromedriver webdriver location added to path variable
+5. Chromedriver webdriver location added to path variable!
 
 #### To run:
 <b>mvn clean test</b>
