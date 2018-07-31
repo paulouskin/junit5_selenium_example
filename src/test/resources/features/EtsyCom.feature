@@ -4,7 +4,8 @@ Feature: Search for items on Etsy
   So that I will be able to buy necessary items fast
 
   Scenario: Search for particular item
-    Given I go to "Etsy.com" page
+    Given I am on the main page
     When I accept terms and conditions
     And I search for "handmade paper toy" items
-    Then I get results page for "handmade paper toy" items
+    Then I see search results table
+    And I get search results for "paper toy" items
