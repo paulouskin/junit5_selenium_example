@@ -7,7 +7,8 @@ Feature: Display filter tags on search result page
     Given I am on the main page
     When I accept terms and conditions
     And I search for "leather bags" items
-    Then I get search results page for "leather bags" items
+    Then I see search results table
+    Then I get search results for "leather bags" items
     When I apply "Free shipping" shipping filter
     And I apply "Anywhere" shop location filter
     And I apply "Handmade" item type filter

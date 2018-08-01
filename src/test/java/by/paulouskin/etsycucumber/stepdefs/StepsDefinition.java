@@ -1,19 +1,20 @@
 package by.paulouskin.etsycucumber.stepdefs;
 
 import by.paulouskin.etsycucumber.pageobjects.EtsyComPageObject;
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.jupiter.api.Assertions;
+import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.stringContainsInOrder;
 
 public class StepsDefinition {
@@ -37,6 +38,11 @@ public class StepsDefinition {
         etsyPage.searchForItem(query);
     }
 
+    @When("^I search for items and apply filters:$")
+    public void search_for_items_and_apply_filters(DataTable table) {
+        List<List<String>> values = table.asLists();
+        etsyPage.searchForItem(values.get(1).get(0));
+    }
     @Then("^I see search results table$")
     public void isSearchResultsTableVisible() {
         assertThat("Search results is visible",
@@ -49,8 +55,11 @@ public class StepsDefinition {
                 stringContainsInOrder(Arrays.asList(items.split(" "))));
     }
 
+
+
     @After
     public void tearDown() {
+        System.out.println("Cucumber tests ended");
         webDriver.quit();
     }
 

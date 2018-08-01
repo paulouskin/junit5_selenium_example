@@ -35,7 +35,7 @@ public class EtsyComPageObject extends BasePageObject{
     }
 
     public String getTitle() {
-        return webDriver.getTitle();
+        return webDriver.getTitle().toLowerCase();
     }
 
     public boolean isSearchResultsVisible() {
