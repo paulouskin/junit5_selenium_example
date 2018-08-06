@@ -30,6 +30,8 @@ public class StepsDefinition {
         ChromeOptions options = new ChromeOptions();
         boolean isHeadless = Boolean.valueOf(System.getProperty("isHeadless"));
         options.setHeadless(isHeadless);
+        System.setProperty("webdriver.chrome.driver",
+                System.getProperty("chromeDriverBinaryPath")+"/chromedriver.exe");
         webDriver = new ChromeDriver(options);
     }
     //Given

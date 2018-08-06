@@ -82,6 +82,7 @@
 </dependencies>
     <properties>
         <isHeadless>true</isHeadless>
+        <chromeDriverBinaryPath>C://chromedriver</chromeDriverBinaryPath>
     </properties>
 <build>
     <plugins>
@@ -120,6 +121,7 @@
                 <testFailureIgnore>true</testFailureIgnore>
                 <systemPropertyVariables>
                         <isHeadless>${isHeadless}</isHeadless>
+                    <chromeDriverBinaryPath>${chromeDriverBinaryPath}</chromeDriverBinaryPath>
                 </systemPropertyVariables>
             </configuration>
             <executions>
