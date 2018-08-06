@@ -17,12 +17,12 @@ public class EtsyComPageObject extends BasePageObject{
 
     public EtsyComPageObject(WebDriver webDriver) {
         super(webDriver);
-        webDriver.get("http://www.etsy.com");
+        webDriver.get("http://www.etsy.com/uk");
     }
 
     public void acceptTermsAndConditions() {
-        findElementWithWait(By.cssSelector(TERMS_AND_CONDITIONS_WRAPPER))
-                .findElement(By.cssSelector("button.btn-outline-black")).click();
+        findElementWithWait(By.cssSelector(TERMS_AND_CONDITIONS_WRAPPER));
+        findElementWithWait(By.cssSelector("button.btn-outline-black")).click();
     }
 
     public void searchForItem(String query) {
@@ -56,7 +56,7 @@ public class EtsyComPageObject extends BasePageObject{
     private WebElement checkFilterForCategorySection(String filter, String category) {
         String xpath = String.format(FILTER_FOR_CATEGORY_LINK, category, filter);
         return new WebDriverWait(webDriver,10).until(
-                ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))
+                ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))
         );
     }
 

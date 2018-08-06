@@ -11,3 +11,6 @@ Feature: Search for items (data table mode)
     When I search for items and apply filters:
     |items|filter category|filter|
     |wedding gift|Shipping|Free shipping|
+    Then next filter tags are visible:
+    |tags|
+    |Free shipping|

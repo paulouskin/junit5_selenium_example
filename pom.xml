@@ -96,6 +96,9 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>2.19.1</version>
+            <configuration>
+                <testFailureIgnore>true</testFailureIgnore>
+            </configuration>
             <dependencies>
                 <dependency>
                     <groupId>org.junit.platform</groupId>
@@ -112,6 +115,7 @@
                 <includes>
                     <include>**/etsycucumber/**/*.java</include>
                 </includes>
+                <testFailureIgnore>true</testFailureIgnore>
             </configuration>
             <executions>
                 <execution>
@@ -119,6 +123,29 @@
                         <goal>integration-test</goal>
                         <goal>verify</goal>
                     </goals>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>net.masterthought</groupId>
+            <artifactId>maven-cucumber-reporting</artifactId>
+            <version>3.16.0</version>
+            <executions>
+                <execution>
+                    <id>execution</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                    <configuration>
+                        <projectName>Cucumber example</projectName>
+                        <outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>
+                        <parallelTesting>false</parallelTesting>
+                        <buildNumber>1</buildNumber>
+                        <jsonFiles>
+                            <param>target/cucumber-reports/CucumberReport.json</param>
+                        </jsonFiles>
+                    </configuration>
                 </execution>
             </executions>
         </plugin>

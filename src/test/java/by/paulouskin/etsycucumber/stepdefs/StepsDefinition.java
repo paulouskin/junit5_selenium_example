@@ -1,7 +1,9 @@
 package by.paulouskin.etsycucumber.stepdefs;
 
 import by.paulouskin.etsycucumber.pageobjects.EtsyComPageObject;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -9,6 +11,7 @@ import io.cucumber.datatable.DataTable;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,9 +23,16 @@ import static org.hamcrest.Matchers.stringContainsInOrder;
 
 public class StepsDefinition {
 
-    WebDriver webDriver = new ChromeDriver();
+    private WebDriver webDriver;
     private EtsyComPageObject etsyPage;
 
+    @Before
+    public void initializeTest() {
+        System.out.println("Starting our Cucumber tests");
+        ChromeOptions options = new ChromeOptions();
+        //options.setHeadless(true);
+        webDriver = new ChromeDriver(options);
+    }
     //Given
 
     @Given("^I am on the main page$")
@@ -96,8 +106,11 @@ public class StepsDefinition {
 
 
     @After
-    public void tearDown() {
+    public void tearDown(Scenario scenario) {
         System.out.println("Cucumber tests ended");
+        if (scenario.isFailed()) {
+            etsyPage.captureScreenShot();
+        }
         webDriver.quit();
     }
 
