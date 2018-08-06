@@ -13,10 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.stringContainsInOrder;
@@ -30,7 +28,8 @@ public class StepsDefinition {
     public void initializeTest() {
         System.out.println("Starting our Cucumber tests");
         ChromeOptions options = new ChromeOptions();
-        //options.setHeadless(true);
+        boolean isHeadless = Boolean.valueOf(System.getProperty("isHeadless"));
+        options.setHeadless(isHeadless);
         webDriver = new ChromeDriver(options);
     }
     //Given
