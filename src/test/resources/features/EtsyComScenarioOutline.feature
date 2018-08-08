@@ -1,3 +1,4 @@
+@outline
 Feature: Search for items (table mode)
   As a user
   I want to search for different items

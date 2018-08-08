@@ -1,3 +1,4 @@
+@real
 Feature: Display filter tags on search result page
   As a user
   I want to see tags for applied filters on search results

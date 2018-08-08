@@ -1,3 +1,4 @@
+@datatable
 Feature: Search for items (data table mode)
   As a user
   I want to search for different items

@@ -1,3 +1,4 @@
+@smoke
 Feature: Search for items on Etsy
   As a user
   I want to search for different items
