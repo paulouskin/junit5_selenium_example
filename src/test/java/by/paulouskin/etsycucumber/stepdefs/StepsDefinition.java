@@ -73,12 +73,18 @@ public class StepsDefinition {
 
     @When("^I apply \"(.*?)\" shop location filter$")
     public void applyShopLocationFilterOnSearchResults(String filter) {
+        //implement new custom shop location
         etsyPage.applyFilterFromCategory("Shop location" , filter);
     }
 
     @When("^I apply \"(.*?)\" item type filter$")
     public void applyItemTypeFilterOnSearchResults(String filter) {
         etsyPage.applyFilterFromCategory("Item type" , filter);
+    }
+
+    @When("^I apply \"(.*?)\" special offers filter$")
+    public void applySpecialOffersFilterOnSearchResults(String filter) {
+        etsyPage.applyFilterFromCategory("Special offers" , filter);
     }
 
     //Then section
