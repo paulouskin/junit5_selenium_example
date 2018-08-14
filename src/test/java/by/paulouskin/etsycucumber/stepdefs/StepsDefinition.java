@@ -66,6 +66,11 @@ public class StepsDefinition {
 
     }
 
+    @When("^I select \"(.*?)\" as a shop location$")
+    public void selectShopLocationForSearchResults(String location) {
+        etsyPage.selectShopLocation(location);
+    }
+
     @When("^I apply \"(.*?)\" shipping filter$")
     public void applyShippingFilterOnSearchResults(String filter) {
         etsyPage.applyFilterFromCategory("Shipping" , filter);

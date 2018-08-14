@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 public class EtsyComPageObject extends BasePageObject{
 
+    private final String SHOP_LOCATION_SEARCH_BUTTON = "button.shop-location-submit";
+    private final String SHOP_LOCATION_TEXT_FIELD = "#shop-location-input";
     private final String TERMS_AND_CONDITIONS_WRAPPER = "div.alert";
     private final String SEARCH_FIELD = "#search-query";
     private  String FILTER_FOR_CATEGORY_LINK = "//h5[text()='%s']/../..//a[contains(.,'%s')]"; //Check
@@ -64,5 +66,21 @@ public class EtsyComPageObject extends BasePageObject{
         return findElementsWithWait(By.cssSelector(".tag")).stream()
                 .map(webElement -> webElement.getText())
                 .collect(Collectors.toList());
+    }
+
+    public void selectShopLocation(String location) {
+        enterLocationToShopLocationField(location);
+        //selectFirstItemInShopLocationSuggestionsList();
+        clickSearchButton();
+    }
+
+    private void clickSearchButton() {
+        findElementWithWait(By.cssSelector(SHOP_LOCATION_SEARCH_BUTTON)).click();
+    }
+
+    private void enterLocationToShopLocationField(String location) {
+        WebElement shopLocationText = findElementWithWait(By.cssSelector(SHOP_LOCATION_TEXT_FIELD));
+        shopLocationText.clear();
+        shopLocationText.sendKeys(location);
     }
 }

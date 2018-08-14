@@ -12,9 +12,11 @@ Feature: Display filter tags on search result page
     Then I get search results for "leather bags" items
     When I apply "Free shipping" shipping filter
     And I apply "On sale" special offers filter
+    And I select "Minsk" as a shop location
     And I apply "Handmade" item type filter
     Then next filter tags are visible:
     |tags|
     |Free shipping|
     |On sale|
     |Handmade|
+    |Items from Minsk, Belarus|
