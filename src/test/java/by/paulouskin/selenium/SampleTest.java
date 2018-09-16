@@ -5,13 +5,26 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class SampleTest {
-    static WebDriver wd;
+    static RemoteWebDriver wd;
 
     @BeforeAll
     public static void setUp() {
-        wd = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver","C:\\chromedriver\\");
+        ChromeOptions opts = new ChromeOptions();
+        try {
+            wd = new RemoteWebDriver(
+                    new URL("http://192.168.0.16:4444/wd/hub"), opts);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
