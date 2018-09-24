@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class EtsyComPageObject extends BasePageObject{
 
+    private static final String SEARCH_BUTTON_WRAPPER = "button.homepage-search-button";
     private final String SHOP_LOCATION_SEARCH_BUTTON = "button.shop-location-submit";
     private final String SHOP_LOCATION_TEXT_FIELD = "#shop-location-input";
     private final String TERMS_AND_CONDITIONS_WRAPPER = "div.alert";
@@ -33,7 +34,7 @@ public class EtsyComPageObject extends BasePageObject{
     }
 
     private WebElement getSearchButton() {
-        return findElementWithWait(By.cssSelector("div.search-button-wrapper button"));
+        return findElementWithWait(By.cssSelector(SEARCH_BUTTON_WRAPPER));
     }
 
     private void enterSearchQuery(String query) {
@@ -71,10 +72,10 @@ public class EtsyComPageObject extends BasePageObject{
     public void selectShopLocation(String location) {
         enterLocationToShopLocationField(location);
         //selectFirstItemInShopLocationSuggestionsList();
-        clickSearchButton();
+        clickShopLocationSearchButton();
     }
 
-    private void clickSearchButton() {
+    private void clickShopLocationSearchButton() {
         findElementWithWait(By.cssSelector(SHOP_LOCATION_SEARCH_BUTTON)).click();
     }
 
